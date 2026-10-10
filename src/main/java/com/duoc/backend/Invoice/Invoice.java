@@ -13,8 +13,9 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String patientName;
     private LocalDate date;
+    private String patientName;
+
     private LocalTime time;
 
     @ManyToMany
@@ -36,6 +37,14 @@ public class Invoice {
 
 
     private Double totalCost;
+
+    public Invoice(Long id, String patientName, LocalDate date, List<Care> cares, List<Medication> medications) {
+        this.id = id;
+        this.patientName = patientName;
+        this.date = date;
+        this.cares = cares;
+        this.medications = medications;
+    }
 
     // Getters and Setters
     public Long getId() {
